@@ -117,3 +117,99 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Technologies Card: filtros, carrusel y overrides locales */
+.technologies-card .tech-controls {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;
+}
+.technologies-card .chips { display: flex; gap: .5rem; flex-wrap: wrap; }
+.technologies-card .chip {
+    padding: .5rem .9rem; border-radius: 999px; border: 1px solid var(--accent-color);
+    background: transparent; color: var(--text-secondary); cursor: pointer;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+    font-weight: 600; font-size: .9rem;
+}
+.technologies-card .chip.active,
+.technologies-card .chip:hover { background: var(--accent-color); color: var(--background); }
+
+.technologies-card .carousel-nav { display: flex; gap: .5rem; margin-left: auto; }
+.technologies-card .scroll-btn {
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--accent-color);
+    background: var(--secondary-bg); color: var(--text-secondary); cursor: pointer;
+    display: grid; place-items: center; transition: transform .2s ease, background .2s ease;
+}
+.technologies-card .scroll-btn:hover { transform: translateY(-2px); background: var(--accent-hover); }
+
+/* Carrusel (override local de .tech-grid/.tech-item) */
+.technologies-card .tech-carousel { position: relative; }
+.technologies-card .tech-grid {
+    display: flex; overflow-x: auto; gap: 1.25rem; padding: .5rem 0 0;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+}
+.technologies-card .tech-item {
+    position: relative; flex: 0 0 auto; scroll-snap-align: center;
+    min-width: 200px; max-width: 220px;
+}
+/* Hover local más sutil para el carrusel (evita traslados grandes) */
+.technologies-card .tech-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Badges y descripción en táctiles */
+.technologies-card .level-badge {
+    position: absolute; top: 8px; right: 8px; font-size: .7rem; font-weight: 700;
+    padding: .25rem .5rem; border-radius: 999px; background: rgba(0,0,0,.35); color: #fff;
+    backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.15);
+}
+.technologies-card .tech-item.open .tech-description {
+    opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1);
+}
+
+/* Layout apilado por grupos (sin carrusel) */
+.technologies-card .tech-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.technologies-card .group-title {
+    margin: 0 0 .75rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+}
+.technologies-card .group-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    opacity: .5;
+}
+
+.technologies-card .tech-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+/* Ajustes de tarjeta dentro de grilla vertical */
+.technologies-card .tech-item {
+    flex: initial;            /* neutraliza tamaños del carrusel */
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .technologies-card .tech-list {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: .8rem;
+    }
+}
