@@ -1,0 +1,157 @@
+/* Dark/Light Mode */
+body.dark {
+    background: var(--text-primary);
+    color: var(--primary-bg);
+}
+
+body.dark .navbar,
+body.dark .card,
+body.dark .technologies-card,
+body.dark .about-card,
+body.dark .main-card,
+body.dark .projects-card,
+body.dark .experience-card,
+body.dark .contact .card {
+    background: #fff;
+    color: var(--primary-bg);
+    border-color: var(--accent-color);
+}
+
+body.dark .section-title,
+body.dark .nav-links a::after,
+body.dark .timeline,
+body.dark .timeline .item::before {
+    color: var(--accent-color);
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+body.dark .tech-item,
+body.dark .tech-description,
+body.dark .project-card {
+    background: #f5f5f5;
+    color: var(--primary-bg);
+    border-color: var(--accent-color);
+}
+
+body.dark .cta-button,
+body.dark button,
+body.dark input[type="submit"] {
+    background: transparent;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+body.dark .cta-button:hover,
+body.dark button:hover,
+body.dark input[type="submit"]:hover {
+    background: var(--accent-hover);
+    color: var(--primary-bg);
+}
+
+body.dark .contact input,
+body.dark .contact textarea {
+    background: #fff;
+    color: var(--primary-bg);
+    border-color: var(--accent-color);
+}
+
+body.dark .contact input:focus,
+body.dark .contact textarea:focus {
+    background: #f5f5f5;
+    border-color: var(--accent-color);
+}
+
+body.dark .nav-links a,
+body.dark .social-icon,
+body.dark #theme-toggle {
+    color: var(--primary-bg);
+}
+
+body.dark .nav-links a:hover,
+body.dark .social-icon:hover {
+    color: var(--accent-color);
+}
+
+body.dark .hero-subtitle,
+body.dark .location i,
+body.dark .project-card h3,
+body.dark .about-card strong,
+body.dark .project-card strong {
+    color: var(--accent-color);
+}
+
+body.dark .second-line,
+body.dark .location,
+body.dark .tech-item span,
+body.dark .tech-description,
+body.dark .project-card p,
+body.dark .about-card p {
+    color: #666;
+}
+
+/* Modo oscuro: título de sección color de acento */
+body.dark .section-title {
+    color: var(--accent-color) !important;
+    background: none;
+    border-color: var(--accent-color);
+}
+
+/* Modo claro: título de sección negro */
+body:not(.dark) .section-title {
+    color: #ffffff !important;
+    background: none;
+    border-color: var(--accent-color);
+}
+
+body,
+body.dark {
+    transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+/* Cards y navbar */
+.navbar,
+.card,
+.technologies-card,
+.about-card,
+.main-card,
+.projects-card,
+.experience-card,
+.contact .card,
+body.dark .navbar,
+body.dark .card,
+body.dark .technologies-card,
+body.dark .about-card,
+body.dark .main-card,
+body.dark .projects-card,
+body.dark .experience-card,
+body.dark .contact .card {
+    transition: background 0.4s ease-in-out, color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border-color 0.4s ease-in-out;
+}
+
+/* Títulos de sección */
+.section-title,
+body.dark .section-title,
+body:not(.dark) .section-title {
+    transition: color 0.4s ease-in-out, background 0.4s ease-in-out, border-color 0.4s ease-in-out;
+}
+
+/* Botones */
+.cta-button,
+button,
+input[type="submit"],
+body.dark .cta-button,
+body.dark button,
+body.dark input[type="submit"] {
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+/* Links y social icons */
+.nav-links a,
+.social-icon,
+#theme-toggle,
+body.dark .nav-links a,
+body.dark .social-icon,
+body.dark #theme-toggle {
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+}

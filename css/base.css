@@ -1,0 +1,45 @@
+/* CSS Variables */
+:root {
+    --primary-bg: #101820;
+    --secondary-bg: rgba(24, 32, 40, 0.92);
+    --card-bg: rgba(24, 32, 40, 0.8);
+    --text-primary: #eaeaea;
+    --text-secondary: #b0b8c1;
+    --accent-color: #ff8800;
+    --accent-hover: rgba(255, 136, 0, 0.08);
+    --border-color: rgba(255, 136, 0, 0.15);
+    --shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    --shadow-hover: 0 20px 40px -15px rgba(24, 32, 40, 0.9);
+}
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    width: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}

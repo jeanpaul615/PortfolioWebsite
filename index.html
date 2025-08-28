@@ -8,209 +8,85 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    
+    <!-- CSS Components -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/hero.css">
+    <link rel="stylesheet" href="css/components/cards.css">
+    <link rel="stylesheet" href="css/components/technologies.css">
+    <link rel="stylesheet" href="css/components/projects.css">
+    <link rel="stylesheet" href="css/components/contact.css">
+    <link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home" class="hvr-underline-from-center">Inicio</a></li>
-            <li><a href="#about" class="hvr-underline-from-center">Sobre mí</a></li>
-            <li><a href="#projects" class="hvr-underline-from-center">Proyectos</a></li>
-        </ul>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="hero-content" data-aos="flip-left" data-aos-duration="1000">
-            <h1>Hola, soy <span class="gradient-text">Jean Paul Puerta Salazar</span></h1>
-            <p class="hero-subtitle">Desarrollador Full Stack & Analista de Software</p>
-            <p class="hero-subtitle second-line">Apasionado por la tecnología y la calidad del software</p>
-            <p class="location">
-                <i class="fas fa-map-marker-alt"></i>
-                Pereira, Colombia
-            </p>
-            <div class="social-links">
-                <a href="https://github.com/jeanpaulps" target="_blank" class="social-icon hvr-float">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <div class="hero-cta">
-                <a href="#projects" class="cta-button scroll-link">Ver mis proyectos</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="card about-card" data-aos="flip-right" data-aos-duration="1000">
-            <h2 class="section-title">Sobre mí</h2>
-            <p>
-                Soy un desarrollador Full Stack y analista de software con una sólida base en tecnologías modernas como ReactJS (frontend) y NodeJS (backend). Me gradué como tecnólogo en Análisis y Desarrollo de Software (SENA) y actualmente curso el 6.º semestre de Ingeniería en Sistemas y Computación (UTP).
-            </p>
-            <p>
-                Durante mis prácticas profesionales, desarrollé soluciones reales y eficientes para empresas del sector público y telecomunicaciones. Mi portafolio incluye múltiples proyectos que evidencian mi capacidad técnica, enfoque práctico y compromiso con la calidad.
-            </p>
-            <h3>Educación</h3>
-            <ul>
-                <li><strong>Tecnólogo en Análisis y Desarrollo de Software</strong> | SENA | 2022-2024</li>
-                <li><strong>Ingeniería en Sistemas y Computación</strong> | UTP | 2022-2027 (6° semestre en curso)</li>
+    <!-- Component Containers -->
+    <div id="navbar-container">
+        <!-- Fallback navbar mientras carga -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
+            <button id="theme-toggle" title="Cambiar tema">🌙</button>
+        </nav>
+    </div>
+    
+    <main>
+        <div id="hero-container">
+            <!-- Hero mejorado para búsqueda de trabajo -->
+            <section id="home" class="hero">
+                <div class="hero-content" data-aos="flip-left" data-aos-duration="1000">
+                    
+                    <h1 class="typing">Hola, soy <span class="gradient-text">Jean Paul Puerta Salazar</span></h1>
+                    <p class="hero-subtitle"><strong>Desarrollador Full Stack con +2 años de experiencia</strong></p>
+                    <p class="hero-subtitle second-line">Especializado en React, Nest.js y soluciones escalables</p>
+                    
+                    
+                    <p class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <strong>Pereira, Colombia</strong>
+                    </p>
+                    
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/jeanpaul615" target="_blank" class="social-icon hvr-float" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/jean-paul-puerta-40068a202" target="_blank" class="social-icon hvr-float" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:salazarjean200@gmail.com" class="social-icon hvr-float" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="hero-cta">
+                        <a href="#contact" class="cta-button scroll-link">Contactar para colaborar</a>
+                    </div>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <div class="mouse"></div>
+                </div>
+            </section>
         </div>
-        <div class="card technologies-card" data-aos="flip-left" data-aos-duration="1000">
-            <h2 class="section-title">Tecnologías</h2>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <img src="assets/js.svg" alt="JavaScript">
-                    <span>JavaScript</span>
-                    <div class="tech-description">
-                        Desarrollo de aplicaciones web interactivas y dinámicas.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/react.svg" alt="ReactJS">
-                    <span>ReactJS</span>
-                    <div class="tech-description">
-                        Librería para construir interfaces de usuario modernas.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/node.svg" alt="NodeJS">
-                    <span>NodeJS</span>
-                    <div class="tech-description">
-                        Entorno de ejecución para aplicaciones backend escalables.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/express.svg" alt="ExpressJS">
-                    <span>ExpressJS</span>
-                    <div class="tech-description">
-                        Framework minimalista para aplicaciones web en NodeJS.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/tailwind.svg" alt="TailwindCSS">
-                    <span>TailwindCSS</span>
-                    <div class="tech-description">
-                        Framework de utilidades para estilos rápidos y responsivos.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/mysql.svg" alt="MySQL">
-                    <span>MySQL</span>
-                    <div class="tech-description">
-                        Sistema de gestión de bases de datos relacional.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/python.svg" alt="Python">
-                    <span>Python</span>
-                    <div class="tech-description">
-                        Lenguaje versátil para automatización y backend.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/php.svg" alt="PHP">
-                    <span>PHP</span>
-                    <div class="tech-description">
-                        Desarrollo de aplicaciones web y sistemas backend.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/aws.svg" alt="AWS">
-                    <span>AWS</span>
-                    <div class="tech-description">
-                        Servicios en la nube para despliegue y escalabilidad.
-                    </div>
-                </div>
-                <div class="tech-item">
-                    <img src="assets/codeigniter.svg" alt="CodeIgniter">
-                    <span>CodeIgniter</span>
-                    <div class="tech-description">
-                        Framework PHP para desarrollo rápido de aplicaciones.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <div id="about-container"></div>
+        <div id="experience-container"></div>
+        <div id="projects-container"></div>
+        <div id="contact-container"></div>
+    </main>
+    
+    <div id="footer-container"></div>
 
-    <!-- Nueva sección de experiencia laboral -->
-    <section id="experience" class="experience">
-        <div class="card experience-card" data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="section-title">Experiencia Laboral</h2>
-            <div class="experience-list">
-                <div class="experience-item">
-                    <h3>Desarrollador Full Stack – Serviciudad E.S.P (Pasantía)</h3>
-                    <p><strong>Junio – Diciembre 2024 (6 meses)</strong></p>
-                    <p>Empresa de Servicios Públicos Domiciliarios</p>
-                    <p><strong>Tecnologías:</strong> NodeJS, ExpressJS, ReactJS, Tailwind, Python, PHP, CodeIgniter, MySQL, AWS</p>
-                    <p>Aporté soluciones web a procesos de inspección vehicular y gestión interna.</p>
-                </div>
-                <div class="experience-item">
-                    <h3>Desarrollador Full Stack – Legon Telecomunicaciones</h3>
-                    <p><strong>2025</strong></p>
-                    <p>Proveedor de Internet FTTH y TV</p>
-                    <p><strong>Tecnologías:</strong> NodeJS, ExpressJS, ReactJS, Tailwind, MySQL, AWS</p>
-                    <p>Desarrollo e implementación de sistemas para inventarios, clientes y reportes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <div class="card main-card">
-            <h2 class="section-title" data-aos="flip-up" data-aos-duration="800">Proyectos</h2>
-            <div class="projects-grid">
-                <!-- Elimina los dos proyectos laborales de aquí si estaban, deja solo los personales -->
-                <div class="project-card" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="300">
-                    <h3>Simulación Tienda Virtual</h3>
-                    <p><strong>Tecnologías:</strong> PHP, MySQL, HTML, CSS, JS</p>
-                </div>
-                <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400">
-                    <h3>Sistema de Inventario</h3>
-                    <p><strong>Tecnologías:</strong> Excel, VB, Python</p>
-                </div>
-                <div class="project-card" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="500">
-                    <h3>Recibo con manejo de Archivos</h3>
-                    <p><strong>Tecnologías:</strong> C++</p>
-                </div>
-                <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="600">
-                    <h3>Rompecabezas Numérico</h3>
-                    <p><strong>Tecnologías:</strong> Python, Turtle</p>
-                </div>
-                <div class="project-card" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="700">
-                    <h3>Juego Ahorcado</h3>
-                    <p><strong>Tecnologías:</strong> C++</p>
-                </div>
-                <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="800">
-                    <h3>SuperMercado con Inventario</h3>
-                    <p><strong>Backend:</strong> Python (FastAPI) | <strong>Frontend:</strong> React | <strong>BD:</strong> MySQL, Tailwind</p>
-                </div>
-                <div class="project-card" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="900">
-                    <h3>Triki</h3>
-                    <p><strong>Tecnologías:</strong> React JS</p>
-                </div>
-                <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="1000">
-                    <h3>Lector de Asistencia QR</h3>
-                    <p><strong>Tecnologías:</strong> HTML, Tailwind, PHP, JS, MySQL</p>
-                </div>
-                <div class="project-card" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="1100">
-                    <h3>Legon Inventario</h3>
-                    <p><strong>Tecnologías:</strong> ReactJS, NodeJS, Tailwind, Express, MySQL</p>
-                </div>
-                <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="1200">
-                    <h3>Software de Chequeos Preoperacionales de Vehículos</h3>
-                    <p><strong>Tecnologías:</strong> ReactJS, NodeJS, Tailwind, Express, MySQL</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -218,9 +94,11 @@
             offset: 200
         });
     </script>
-    <script src="script.js"></script>
-    <footer>
-        <p>© 2025 Jean Paul Puerta Salazar</p>
-    </footer>
+    
+    <!-- Component Scripts -->
+    <script src="js/componentLoader.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>
