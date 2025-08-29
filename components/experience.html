@@ -1,34 +1,51 @@
 <section id="experience" class="experience">
     <div class="card experience-card" data-aos="fade-up" data-aos-duration="1000">
         <h2 class="section-title">Experiencia Laboral</h2>
-        <!-- Timeline visual -->
-        <div class="timeline">
-            <div class="item">
-                <strong>2024</strong> - Desarrollador Full Stack – Serviciudad E.S.P (Pasantía)
-                <p>Empresa de Servicios Públicos Domiciliarios</p>
-                <p><strong>Tecnologías:</strong> NodeJS, ExpressJS, ReactJS, Tailwind, Python, PHP, CodeIgniter, MySQL, AWS</p>
-            </div>
-            <div class="item">
-                <strong>2025</strong> - Desarrollador Full Stack – Legon Telecomunicaciones
-                <p>Proveedor de Internet FTTH y TV</p>
-                <p><strong>Tecnologías:</strong> NodeJS, ExpressJS, ReactJS, Tailwind, MySQL, AWS</p>
-            </div>
-        </div>
-        <div class="experience-list">
-            <div class="experience-item">
-                <h3>Desarrollador Full Stack – Serviciudad E.S.P (Pasantía)</h3>
-                <p><strong>Junio – Diciembre 2024 (6 meses)</strong></p>
-                <p>Empresa de Servicios Públicos Domiciliarios</p>
-                <p><strong>Tecnologías:</strong> NodeJS, ExpressJS, ReactJS, Tailwind, Python, PHP, CodeIgniter, MySQL, AWS</p>
-                <p>Aporté soluciones web a procesos de inspección vehicular y gestión interna.</p>
-            </div>
-            <div class="experience-item">
-                <h3>Desarrollador Full Stack – Legon Telecomunicaciones</h3>
-                <p><strong>2025</strong></p>
-                <p>Proveedor de Internet FTTH y TV</p>
-                <p><strong>Tecnologías:</strong> NodeJS, ExpressJS, ReactJS, Tailwind, MySQL, AWS</p>
-                <p>Desarrollo e implementación de sistemas para inventarios, clientes y reportes.</p>
-            </div>
-        </div>
+        <link rel="stylesheet" href="css/components/experience.css">
+        <ol class="timeline" aria-label="Historial laboral">
+            <!-- 2025 -->
+            <li class="timeline-item" data-aos="fade-right">
+                <div class="date-wrap">
+                    <span class="dot" aria-hidden="true"></span>
+                    <time datetime="2025">2025</time>
+                </div>
+                <article class="content">
+                    <h3 class="role">Desarrollador Full Stack – Legon Telecomunicaciones</h3>
+                    <p class="company">Proveedor de Internet FTTH y TV</p>
+                    <!-- reemplaza chips por burbujas -->
+                    <div class="tech-stack" aria-label="Tecnologías utilizadas">
+                        <div class="tech" data-label="NestJS"><img src="assets/nestjs.svg" alt="NestJS" loading="lazy"></div>
+                        <div class="tech" data-label="ReactJS"><img src="assets/react.svg" alt="ReactJS" loading="lazy"></div>
+                        <div class="tech" data-label="Tailwind"><img src="assets/tailwind.svg" alt="Tailwind" loading="lazy"></div>
+                        <div class="tech" data-label="MySQL"><img src="assets/mysql.svg" alt="MySQL" loading="lazy"></div>
+                        <div class="tech" data-label="AWS"><img src="assets/aws.svg" alt="AWS" loading="lazy"></div>
+                    </div>
+                </article>
+            </li>
+
+            <!-- 2024 -->
+            <li class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                <div class="date-wrap">
+                    <span class="dot" aria-hidden="true"></span>
+                    <time datetime="2024">2024</time>
+                </div>
+                <article class="content">
+                    <h3 class="role">Desarrollador Full Stack – Serviciudad E.S.P (Pasantía)</h3>
+                    <p class="company">Empresa de Servicios Públicos Domiciliarios</p>
+                    <!-- reemplaza chips por burbujas -->
+                    <div class="tech-stack" aria-label="Tecnologías utilizadas">
+                        <div class="tech" data-label="NodeJS"><img src="assets/node.svg" alt="NodeJS" loading="lazy"></div>
+                        <div class="tech" data-label="ExpressJS"><img src="assets/express.svg" alt="ExpressJS" loading="lazy"></div>
+                        <div class="tech" data-label="ReactJS"><img src="assets/react.svg" alt="ReactJS" loading="lazy"></div>
+                        <div class="tech" data-label="Tailwind"><img src="assets/tailwind.svg" alt="Tailwind" loading="lazy"></div>
+                        <div class="tech" data-label="Python"><img src="assets/python.svg" alt="Python" loading="lazy"></div>
+                        <div class="tech" data-label="PHP"><img src="assets/php.svg" alt="PHP" loading="lazy"></div>
+                        <div class="tech" data-label="CodeIgniter"><img src="assets/codeigniter.svg" alt="CodeIgniter" loading="lazy"></div>
+                        <div class="tech" data-label="MySQL"><img src="assets/mysql.svg" alt="MySQL" loading="lazy"></div>
+                        <div class="tech" data-label="AWS"><img src="assets/aws.svg" alt="AWS" loading="lazy"></div>
+                    </div>
+                </article>
+            </li>
+        </ol>
     </div>
 </section>

@@ -1,0 +1,106 @@
+.experience-card .timeline {
+    display: grid; gap: 1.75rem; margin-top: 1rem;
+}
+.experience-card .timeline-item {
+    display: grid; grid-template-columns: 120px 1fr; gap: 1.25rem; align-items: start;
+}
+.experience-card .date-wrap { position: relative; text-align: center; }
+.experience-card .date-wrap time {
+    font-weight: 800; color: var(--text-primary);
+    display: inline-block;
+    padding: 0 .4rem;
+    background: var(--secondary-bg);
+    position: relative;
+    z-index: 1;
+}
+.experience-card .date-wrap::after {
+    content: ''; position: absolute; left: calc(50% - 1px); top: calc(0.8rem + 1.6em); bottom: -1.75rem;
+    width: 2px; background: var(--accent-color); opacity: .5;
+}
+.experience-card .timeline-item:last-child .date-wrap::after { display: none; }
+.experience-card .dot {
+    position: absolute; left: calc(50% - 6px); top: calc(0.6rem + 1.4em); width: 12px; height: 12px;
+    background: var(--accent-color); border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(0,0,0,.12);
+}
+.experience-card .content {
+    background: var(--secondary-bg); border: 1px solid var(--accent-color);
+    border-radius: 12px; padding: 1rem 1.1rem; box-shadow: var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.experience-card .content:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,.18); }
+.experience-card .role { margin: 0; font-weight: 800; color: var(--text-primary); }
+.experience-card .company { margin: .25rem 0 .5rem; color: var(--text-secondary); }
+.experience-card .tech-chips {
+    display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem;
+}
+.experience-card .chip {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .35rem .6rem; border: 1px solid var(--accent-color);
+    border-radius: 999px; color: var(--text-secondary); background: transparent;
+    font-size: .85rem; font-weight: 600;
+}
+.experience-card .chip img {
+    width: 16px; height: 16px; object-fit: contain;
+}
+
+/* Burbujas de tecnologías */
+.experience-card .tech-stack {
+    display: flex; flex-wrap: wrap; gap: .6rem .8rem; margin-top: .75rem; align-items: center;
+}
+.experience-card .tech {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--accent-color); background: var(--secondary-bg);
+    display: grid; place-items: center; position: relative;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.experience-card .tech img { width: 22px; height: 22px; object-fit: contain; }
+.experience-card .tech:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,.18); }
+.experience-card .tech::after {
+    content: attr(data-label);
+    position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+    background: var(--secondary-bg); color: var(--text-secondary);
+    border: 1px solid var(--accent-color); padding: .25rem .5rem; border-radius: 6px;
+    white-space: nowrap; opacity: 0; visibility: hidden; transition: all .2s ease; font-size: .75rem;
+}
+.experience-card .tech:hover::after { opacity: 1; visibility: visible; }
+
+/* Responsive */
+@media (max-width: 600px) {
+    .experience-card .timeline-item { grid-template-columns: 1fr; }
+    .experience-card .date-wrap {
+        display: flex; align-items: center; gap: .5rem; justify-content: flex-start;
+    }
+    .experience-card .date-wrap::after { display: none; }
+    .experience-card .dot { position: static; }
+    .experience-card .tech { width: 40px; height: 40px; }
+    .experience-card .tech img { width: 20px; height: 20px; }
+}
+
+/* Modo claro */
+.light-theme .experience-card {
+    --secondary-bg: #ffffff; /* Fondo blanco */
+    --text-primary: #000000; /* Texto principal oscuro */
+    --text-secondary: #333333; /* Texto secundario más tenue */
+    --accent-color: #0078d4; /* Color de acento */
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.light-theme .experience-card .timeline-item {
+    border-left: 2px solid var(--accent-color); /* Línea de tiempo en color de acento */
+}
+
+.light-theme .experience-card .date-wrap time {
+    background: var(--secondary-bg); /* Fondo blanco para el texto */
+    color: var(--text-primary); /* Texto oscuro */
+}
+
+.light-theme .experience-card .date-wrap::after {
+    background: var(--accent-color); /* Línea de tiempo en color de acento */
+    opacity: 0.7; /* Ajustar visibilidad */
+}
+
+.light-theme .experience-card .dot {
+    background: var(--accent-color); /* Punto en color de acento */
+    box-shadow: 0 0 0 4px rgba(0, 120, 212, 0.2); /* Sombra ligera */
+}
