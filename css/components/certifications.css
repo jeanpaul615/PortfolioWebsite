@@ -1,0 +1,356 @@
+/* contenedor del bloque */
+
+/* Removed empty .certifications ruleset */
+
+.certifications-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	padding: 2rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.cert-card {
+	position: relative;
+	border: 1px solid rgba(3, 0, 0, 0.18);
+	border-radius: 10px;
+	overflow: hidden;
+	background: rgba(24, 0, 0, 0.06);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 1rem;
+}
+
+.cert-header {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.cert-icon {
+	width: 44px;
+	height: 44px;
+	display: grid;
+	place-items: center;
+	border-radius: 10px;
+	background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+	color: var(--black);
+	font-size: 1.25rem;
+}
+
+.cert-card h3 {
+	margin: 0;
+	color: var(--accent-color);
+	font-size: 1.05rem;
+	line-height: 1.3;
+}
+
+.cert-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	padding: 0.5rem;           /* new */
+	border-radius: 10px;       /* new */
+}
+
+.badge {
+	display: inline-block;
+	padding: 0.25rem 0.6rem;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--black);
+	background: rgba(97,218,251,0.1);
+	border: 1px solid var(--black);
+}
+.badge--muted {
+	color: var(--text-secondary);
+	border-color: rgba(255,255,255,0.18);
+	background: rgba(255,255,255,0.06);
+}
+
+.cert-verify-link {
+	margin-top: 0.25rem;
+	align-self: flex-start;
+	color: var(--black);
+	text-decoration: none;
+	font-weight: 600;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	transition: gap 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+.cert-verify-link i { font-size: 0.95rem; }
+.cert-verify-link:hover {
+	gap: 0.6rem;
+	opacity: 0.95;
+	transform: translateY(-1px);
+}
+
+/* Pointer glow effect (optional) */
+.certifications-grid .cert-card {
+	--mx: 0px; --my: 0px;
+}
+.certifications-grid .cert-card:hover { border-color: var(--accent-color); }
+.certifications-grid:hover .cert-card {
+	will-change: transform, box-shadow;
+}
+
+/* Light theme: white cards, subtle borders and shadows */
+:root[data-theme="light"] .cert-card,
+body[data-theme="light"] .cert-card,
+body.light .cert-card {
+	background: #ffffff;
+	border-color: rgba(19, 0, 0, 0.08);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    color: #111;
+}
+
+:root[data-theme="light"] .cert-card:hover,
+body[data-theme="light"] .cert-card:hover,
+body.light .cert-card:hover {
+	background: #ffffff; /* keep white on hover */
+	border-color: rgba(0,0,0,0.16);
+	box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* Pointer glow on light should be darker, not white */
+:root[data-theme="light"] .cert-card::before,
+body[data-theme="light"] .cert-card::before,
+body.light .cert-card::before {
+	background: radial-gradient(600px circle at var(--mx, 0) var(--my, 0), rgba(0,0,0,0.06), transparent 40%);
+}
+
+/* Icon tile subtle gray in light */
+:root[data-theme="light"] .cert-icon,
+body[data-theme="light"] .cert-icon,
+body.light .cert-icon {
+	background: linear-gradient(145deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+}
+
+/* Badges: softer look on white */
+:root[data-theme="light"] .badge,
+body[data-theme="light"] .badge,
+body.light .badge {
+	background: rgba(0,0,0,0.04);
+	border-color: rgba(0,0,0,0.12);
+	color: var(--accent-color);
+}
+
+:root[data-theme="light"] .badge--muted,
+body[data-theme="light"] .badge--muted,
+body.light .badge--muted {
+	color: var(--text-secondary);
+	background: rgba(0,0,0,0.04);
+	border-color: rgba(0,0,0,0.12);
+}
+
+/* Optional: main card spacing stays, ensure section title contrast is fine */
+/* Removed empty ruleset for .main-card in light theme */
+
+/* Explicit light-mode overrides: white bg + black text */
+html.light .certifications .cert-card,
+html.light-theme .certifications .cert-card,
+body.light .certifications .cert-card,
+body.light-theme .certifications .cert-card,
+:root[data-theme="light"] .certifications .cert-card,
+html[data-theme="light"] .certifications .cert-card,
+body[data-theme="light"] .certifications .cert-card {
+	background: #ffffff !important;
+	color: #111 !important;
+	border-color: rgba(0,0,0,0.12) !important;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+}
+
+html.light .certifications .cert-card:hover,
+html.light-theme .certifications .cert-card:hover,
+body.light .certifications .cert-card:hover,
+body.light-theme .certifications .cert-card:hover,
+:root[data-theme="light"] .certifications .cert-card:hover,
+html[data-theme="light"] .certifications .cert-card:hover,
+body[data-theme="light"] .certifications .cert-card:hover {
+	background: #ffffff !important;
+	border-color: rgba(0,0,0,0.18) !important;
+	box-shadow: 0 10px 24px rgba(0,0,0,0.14) !important;
+}
+
+/* Text elements to black */
+html.light .certifications .cert-card h3,
+html.light-theme .certifications .cert-card h3,
+body.light .certifications .cert-card h3,
+body.light-theme .certifications .cert-card h3,
+:root[data-theme="light"] .certifications .cert-card h3,
+html[data-theme="light"] .certifications .cert-card h3,
+body[data-theme="light"] .certifications .cert-card h3 {
+	color: #111 !important;
+}
+
+/* Link as black in light mode */
+html.light .certifications .cert-verify-link,
+html.light-theme .certifications .cert-verify-link,
+body.light .certifications .cert-verify-link,
+body.light-theme .certifications .cert-verify-link,
+:root[data-theme="light"] .certifications .cert-verify-link,
+html[data-theme="light"] .certifications .cert-verify-link,
+body[data-theme="light"] .certifications .cert-verify-link {
+	color: #111 !important;
+}
+html.light .certifications .cert-verify-link:hover,
+html.light-theme .certifications .cert-verify-link:hover,
+body.light .certifications .cert-verify-link:hover,
+body.light-theme .certifications .cert-verify-link:hover,
+:root[data-theme="light"] .certifications .cert-verify-link:hover,
+html[data-theme="light"] .certifications .cert-verify-link:hover,
+body[data-theme="light"] .certifications .cert-verify-link:hover {
+	opacity: 0.9;
+}
+
+/* Icon tile subtle gray and icon color black */
+html.light .certifications .cert-icon,
+html.light-theme .certifications .cert-icon,
+body.light .certifications .cert-icon,
+body.light-theme .certifications .cert-icon,
+:root[data-theme="light"] .certifications .cert-icon,
+html[data-theme="light"] .certifications .cert-icon,
+body[data-theme="light"] .certifications .cert-icon {
+	background: linear-gradient(145deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02)) !important;
+	color: #111 !important;
+}
+
+/* Badges neutral on white with black text */
+html.light .certifications .badge,
+html.light-theme .certifications .badge,
+body.light .certifications .badge,
+body.light-theme .certifications .badge,
+:root[data-theme="light"] .certifications .badge,
+html[data-theme="light"] .certifications .badge,
+body[data-theme="light"] .certifications .badge {
+	background: rgba(0,0,0,0.05) !important;
+	border-color: rgba(0,0,0,0.14) !important;
+	color: #111 !important;
+}
+html.light .certifications .badge--muted,
+html.light-theme .certifications .badge--muted,
+body.light .certifications .badge--muted,
+body.light-theme .certifications .badge--muted,
+:root[data-theme="light"] .certifications .badge--muted,
+html[data-theme="light"] .certifications .badge--muted,
+body[data-theme="light"] .certifications .badge--muted {
+	color: #333 !important;
+}
+
+/* Pointer glow darker on light */
+html.light .certifications .cert-card::before,
+html.light-theme .certifications .cert-card::before,
+body.light .certifications .cert-card::before,
+body.light-theme .certifications .cert-card::before,
+:root[data-theme="light"] .certifications .cert-card::before,
+html[data-theme="light"] .certifications .cert-card::before,
+body[data-theme="light"] .certifications .cert-card::before {
+	background: radial-gradient(600px circle at var(--mx, 0) var(--my, 0), rgba(0,0,0,0.06), transparent 40%) !important;
+}
+
+/* Light: fondo blanco y borde sutil */
+html.light .certifications .cert-badges,
+html.light-theme .certifications .cert-badges,
+body.light .certifications .cert-badges,
+body.light-theme .certifications .cert-badges,
+:root[data-theme="light"] .certifications .cert-badges,
+html[data-theme="light"] .certifications .cert-badges,
+body[data-theme="light"] .certifications .cert-badges {
+	background: #ffffff !important;
+	border: 1px solid rgba(0,0,0,0.08) !important;
+}
+
+/* Dark: fondo translúcido */
+body.dark .certifications .cert-badges {
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+	.certifications-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+	.certifications-grid {
+		grid-template-columns: 1fr;
+		padding: 1rem;
+	}
+	.cert-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+	.cert-card h3 { font-size: 1rem; }
+}
+
+/* Spacing polish for section and title */
+.certifications .section-title {
+	margin-bottom: 0.5rem;
+}
+
+.certifications .main-card {
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+}
+
+/* Intro description styling */
+.certifications-intro {
+    background: rgba(0,0,0,0.03);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+/* Mejoras modo claro */
+body.light .cert-card,
+body[data-theme="light"] .cert-card {
+    background: #fff !important;
+    color: #111 !important;
+	border-color: var(--accent-color) !important;
+    border: 2px solid #222 !important; /* borde más visible */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+
+body.light .cert-card:hover,
+body[data-theme="light"] .cert-card:hover {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 8px 24px rgba(97,218,251,0.10) !important;
+    transform: translateY(-2px) scale(1.01);
+}
+
+body.light .cert-card h3,
+body[data-theme="light"] .cert-card h3 {
+    color: #111 !important; /* texto negro para contraste */
+    font-weight: 700;
+}
+
+body.light .cert-verify-link,
+body[data-theme="light"] .cert-verify-link {
+    color: #111 !important; /* texto negro para contraste */
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+body.light .cert-badges,
+body[data-theme="light"] .cert-badges {
+    background: #fff !important;
+    border: 1px solid #222 !important; /* borde visible en badges */
+}
+
+body.light .badge,
+body[data-theme="light"] .badge {
+    background: rgba(14, 0, 0, 0.05) !important;
+    color: #111 !important;
+    border-color: #080000 !important;
+}
+
+body.light .badge--muted,
+body[data-theme="light"] .badge--muted {
+	background: rgba(0,0,0,0.04) !important;
+	color: #333 !important;
+	border-color: #222 !important;
+}

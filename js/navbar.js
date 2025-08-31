@@ -43,24 +43,23 @@ class NavbarManager {
                 }
             });
 
-            // Close menu when clicking on a link
-            const navLinksItems = this.navLinks.querySelectorAll('a');
-            navLinksItems.forEach(link => {
-                link.addEventListener('click', () => {
+            // Close menu when clicking on any link inside nav-links (soportando nuevos links)
+            this.navLinks.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
                     this.navLinks.classList.remove('active');
                     const icon = this.menuToggle.querySelector('i');
                     if (icon) {
                         icon.classList.add('fa-bars');
                         icon.classList.remove('fa-times');
                     }
-                });
+                }
             });
         }
     }
 
     setupSmoothScroll() {
-        // Smooth scroll for navigation links
-        const navLinks = document.querySelectorAll('a[href^="#"]');
+        // Smooth scroll para cualquier link que apunte a un id (soportando nuevos links)
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();

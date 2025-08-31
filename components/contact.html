@@ -1,11 +1,72 @@
 <section id="contact" class="contact">
     <div class="card" data-aos="fade-up" data-aos-duration="1000">
         <h2 class="section-title">Contacto</h2>
-        <form id="contact-form">
-            <input type="text" name="nombre" placeholder="Tu nombre" required>
-            <input type="email" name="correo" placeholder="Tu correo" required>
-            <textarea name="mensaje" placeholder="Mensaje" required></textarea>
-            <button type="submit">Enviar</button>
+        <p class="contact-description">
+            ¿Tienes un proyecto en mente o deseas colaborar? ¡Envíame un mensaje y estaré encantado de responder!
+        </p>
+        <form id="contact-form" class="contact-form" aria-label="Formulario de contacto">
+            <div class="form-group">
+                <label for="contact-name" class="sr-only">Tu nombre</label>
+                <input id="contact-name" type="text" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-email" class="sr-only">Tu correo</label>
+                <input id="contact-email" type="email" name="correo" placeholder="Tu correo" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-message" class="sr-only">Mensaje</label>
+                <textarea id="contact-message" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Enviar</button>
+            <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
         </form>
+        <div class="contact-social">
+            <p>Sígueme en mis redes sociales:</p>
+            <div class="social-links">
+                <a href="https://github.com/jeanpaul615" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/jean-paul-puerta-40068a202" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:salazarjean2003@gmail.com" class="social-icon" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
     </div>
+
+    <!-- Inline script for form handling -->
+    <script>
+        // filepath: c:\Users\yeren\OneDrive\Escritorio\certificados\1.Portafolio\PortfolioWebsite\components\contact.html
+        (function() {
+            const form = document.getElementById('contact-form');
+            const feedback = document.getElementById('form-feedback');
+            if (!form || !feedback) return;
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = form.nombre.value.trim();
+                const email = form.correo.value.trim();
+                const message = form.mensaje.value.trim();
+
+                if (!name || !email || !message) {
+                    feedback.textContent = 'Por favor completa todos los campos.';
+                    feedback.classList.add('error');
+                    return;
+                }
+
+                // Redirigir a WhatsApp con el mensaje prellenado
+                const phoneNumber = "573203956315"; // Reemplaza con tu número de WhatsApp
+                const whatsappMessage = `Hola, soy ${name}. Mi correo es ${email}. ${message}`;
+                const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappURL, '_blank');
+
+                feedback.textContent = 'Redirigiendo a WhatsApp...';
+                feedback.classList.remove('error');
+                feedback.classList.add('success');
+                form.reset();
+            });
+        })();
+    </script>
 </section>

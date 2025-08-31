@@ -3,10 +3,10 @@ class ComponentLoader {
     constructor() {
         this.components = [
             { selector: '#navbar-container', path: 'components/navbar.html' },
-            { selector: '#hero-container', path: 'components/hero.html' },
             { selector: '#about-container', path: 'components/about.html' },
             { selector: '#experience-container', path: 'components/experience.html' },
             { selector: '#projects-container', path: 'components/projects.html' },
+            { selector: '#certifications-container', path: 'components/certifications.html' },
             { selector: '#contact-container', path: 'components/contact.html' },
             { selector: '#footer-container', path: 'components/footer.html' }
         ];
@@ -14,6 +14,7 @@ class ComponentLoader {
 
     async loadComponent(selector, path) {
         try {
+            console.log(`Loading component from ${path} into ${selector}`); // Debugging log
             const response = await fetch(path);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -22,9 +23,35 @@ class ComponentLoader {
             const container = document.querySelector(selector);
             if (container) {
                 container.innerHTML = html;
+
+                // Execute any inline or external scripts present inside the loaded HTML
+                const scripts = Array.from(container.querySelectorAll('script'));
+                for (const oldScript of scripts) {
+                    const newScript = document.createElement('script');
+                    // copy attributes (e.g., type, src, async)
+                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    if (oldScript.src) {
+                        // external script - ensure it loads
+                        await new Promise((resolve, reject) => {
+                            newScript.onload = resolve;
+                            newScript.onerror = reject;
+                            document.head.appendChild(newScript);
+                        });
+                    } else {
+                        // inline script - copy text
+                        newScript.textContent = oldScript.textContent;
+                        document.head.appendChild(newScript);
+                    }
+                    // remove the original script tag from container to avoid duplication
+                    oldScript.remove();
+                }
+
+                console.log(`Successfully loaded component into ${selector}`); // Debugging log
+            } else {
+                console.warn(`Container not found for selector: ${selector}`);
             }
         } catch (error) {
-            console.error(`Error loading component ${path}:`, error);
+            console.error(`Error loading component from ${path}:`, error);
         }
     }
 
@@ -35,13 +62,29 @@ class ComponentLoader {
         
         try {
             await Promise.all(promises);
-            this.initializeAfterLoad();
+            await this.initializeAfterLoad(); // wait for post-load initialization (now async)
         } catch (error) {
             console.error('Error loading components:', error);
         }
     }
 
-    initializeAfterLoad() {
+    // helper to dynamically load external scripts
+    loadScript(path) {
+        return new Promise((resolve, reject) => {
+            // prevent loading twice
+            if (document.querySelector(`script[src="${path}"]`)) {
+                return resolve();
+            }
+            const s = document.createElement('script');
+            s.src = path;
+            s.async = false;
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error(`Failed to load script: ${path}`));
+            document.body.appendChild(s);
+        });
+    }
+
+    async initializeAfterLoad() {
         // Reinitialize AOS after components are loaded
         if (typeof AOS !== 'undefined') {
             AOS.refresh();
@@ -53,7 +96,14 @@ class ComponentLoader {
         // Initialize scroll spy
         this.initializeScrollSpy();
 
-        // Initialize other scripts
+        // Load navbar script after navbar markup exists
+        try {
+            await this.loadScript('js/navbar.js');
+        } catch (e) {
+            console.warn('Could not load navbar.js dynamically:', e);
+        }
+
+        // Initialize other scripts if needed (they can be kept static or loaded dynamically similarly)
         if (typeof NavbarManager !== 'undefined') {
             new NavbarManager();
         }
@@ -149,8 +199,4 @@ class ComponentLoader {
     }
 }
 
-// Load components when DOM is ready
-document.addEventListener('DOMContentLoaded', async () => {
-    const loader = new ComponentLoader();
-    await loader.loadAllComponents();
-});
+

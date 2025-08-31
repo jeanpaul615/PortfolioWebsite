@@ -18,24 +18,16 @@
     <link rel="stylesheet" href="css/components/hero.css">
     <link rel="stylesheet" href="css/components/cards.css">
     <link rel="stylesheet" href="css/components/technologies.css">
+    <link rel="stylesheet" href="css/components/experience.css">
     <link rel="stylesheet" href="css/components/projects.css">
     <link rel="stylesheet" href="css/components/contact.css">
+    <link rel="stylesheet" href="css/components/certifications.css">
+    <link rel="stylesheet" href="css/components/footer.css">
     <link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
     <!-- Component Containers -->
     <div id="navbar-container">
-        <!-- Fallback navbar mientras carga -->
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Sobre mí</a></li>
-                
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-            <button id="theme-toggle" title="Cambiar tema">🌙</button>
-        </nav>
     </div>
     
     <main>
@@ -68,7 +60,11 @@
                     </div>
                     
                     <div class="hero-cta">
-                        <a href="#contact" class="cta-button scroll-link">Contactar para colaborar</a>
+                        <a href="#" 
+                           id="hero-contact-button" 
+                           class="cta-button scroll-link">
+                           Contactar
+                        </a>
                     </div>
                 </div>
                 
@@ -96,6 +92,11 @@
                 <!-- ...existing code... -->
             </section>
         </div>
+
+        <div id="certifications-container">
+            <section id="certifications" class="certifications">
+            </section>
+        </div>
         
         <div id="contact-container">
             <section id="contact" class="contact">
@@ -117,8 +118,27 @@
     
     <!-- Component Scripts -->
     <script src="js/componentLoader.js"></script>
-    <script src="js/navbar.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/contact.js"></script>
+    <script src="js/projects.js"></script>
+
+    <!-- Inicializar ComponentLoader después de que los scripts dependientes estén cargados -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = new ComponentLoader();
+            loader.loadAllComponents();
+        });
+    </script>
+
+    <script>
+        // Redirigir a WhatsApp al hacer clic en el botón "Contactar"
+        document.getElementById('hero-contact-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            const phoneNumber = "573203956315"; // Reemplaza con tu número de WhatsApp
+            const message = "Hola, estoy interesado en tus servicios";
+            const whatsappURL = `https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
 </body>
 </html>

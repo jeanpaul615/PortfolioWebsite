@@ -1,3 +1,92 @@
-<footer>
-    <p>© 2025 Jean Paul Puerta Salazar</p>
+<footer class="site-footer" role="contentinfo" aria-label="Pie de página">
+	<div class="container footer-grid">
+		<!-- About / Branding -->
+		<section class="footer-col footer-about" aria-labelledby="footer-about-title">
+			<h3 id="footer-about-title" class="footer-title">Jean Paul Puerta Salazar</h3>
+			<p class="footer-desc">Desarrollador Full Stack — React, Nest.js, Docker y arquitecturas escalables. Apasionado por construir software robusto y experiencias limpias.</p>
+			<div class="footer-social" aria-label="Redes sociales">
+				<a href="https://github.com/jeanpaul615" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon"><i class="fab fa-github"></i></a>
+				<a href="https://linkedin.com/in/jean-paul-puerta-40068a202" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+				<a href="mailto:salazarjean2003@gmail.com" aria-label="Email" class="social-icon"><i class="fas fa-envelope"></i></a>
+			</div>
+		</section>
+
+		<!-- Quick links -->
+		<nav class="footer-col footer-links" aria-labelledby="footer-links-title">
+			<h4 id="footer-links-title" class="footer-title">Enlaces rápidos</h4>
+			<ul>
+				<li><a href="#home" class="footer-link">Inicio</a></li>
+				<li><a href="#about" class="footer-link">Sobre mí</a></li>
+				<li><a href="#certifications" class="footer-link">Certificaciones</a></li>
+				<li><a href="#experience" class="footer-link">Experiencia</a></li>
+				<li><a href="#projects" class="footer-link">Proyectos</a></li>
+				<li><a href="#contact" class="footer-link">Contacto</a></li>
+			</ul>
+		</nav>
+
+		<!-- Contact -->
+		<address class="footer-col footer-contact" aria-labelledby="footer-contact-title">
+			<h4 id="footer-contact-title" class="footer-title">Contacto</h4>
+			<p class="contact-line"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Pereira, Colombia</p>
+			<p class="contact-line"><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:salazarjean2003@gmail.com">salazarjean2003@gmail.com</a></p>
+			<p class="contact-line"><i class="fas fa-phone" aria-hidden="true"></i> +57 • (3203956315)</p>
+		</address>
+
+
+	<!-- Bottom bar -->
+	<div class="footer-bottom">
+		<p class="footer-copyright">© <span id="currentYear"></span> Jean Paul Puerta Salazar — Todos los derechos reservados.</p>
+	</div>
+
+	<!-- Back to top -->
+	<button id="backToTop" class="back-to-top" aria-label="Subir al inicio" title="Subir al inicio">
+		<i class="fas fa-chevron-up"></i>
+	</button>
+
+	<!-- Inline scripts: current year, newsletter (mock) y back-to-top -->
+	<script>
+		// filepath: c:\Users\yeren\OneDrive\Escritorio\certificados\1.Portafolio\PortfolioWebsite\components\footer.html
+		// Coloca el año actual
+		(function(){ const y = new Date().getFullYear(); const node = document.getElementById('currentYear'); if(node) node.textContent = y; })();
+
+		// Newsletter mock (no envío real)
+		(function(){
+			const form = document.getElementById('footer-newsletter-form');
+			const email = document.getElementById('footer-newsletter-email');
+			const feedback = document.getElementById('newsletter-feedback');
+			if(!form || !email || !feedback) return;
+
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const val = email.value.trim();
+				if(!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){
+					feedback.textContent = 'Por favor ingresa un correo válido.';
+					feedback.classList.add('error');
+					return;
+				}
+				// Simula envío
+				feedback.textContent = '¡Gracias! Te avisaré por correo cuando haya novedades.';
+				feedback.classList.remove('error');
+				feedback.classList.add('success');
+				form.reset();
+			});
+		})();
+
+		// Back-to-top smooth scroll
+		(function(){
+			const btn = document.getElementById('backToTop');
+			if(!btn) return;
+			btn.addEventListener('click', () => {
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			});
+			// Mostrar/ocultar según scroll
+			window.addEventListener('scroll', () => {
+				if(window.scrollY > 400){
+					btn.classList.add('visible');
+				} else {
+					btn.classList.remove('visible');
+				}
+			});
+		})();
+	</script>
 </footer>
