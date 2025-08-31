@@ -1,13 +1,27 @@
-/* Variables */
+/* Variables para modo claro (default) */
 :root {
-    --footer-bg: #0f1724;
-    --footer-text: #9aa4b2;
+    --footer-bg: var(--background);
+    --footer-text: #f9f9f9;
     --footer-title: #ffffff;
-    --footer-link: #9aa4b2;
-    --footer-link-hover: #ffffff;
-    --footer-accent: #6ee7b7;
-    --footer-accent-hover: #60a5fa;
+    --footer-link: #f9f9f9;
+    --footer-link-hover: #007bff;
+    --footer-accent: #007bff;
+    --footer-accent-hover: #0056b3;
     --footer-border: rgba(255, 255, 255, 0.1);
+    --footer-radius: 8px;
+    --footer-gap: 24px;
+}
+
+/* Variables para modo oscuro */
+body.dark {
+    --footer-bg: #f9f9f9;
+    --footer-text: #4a4a4a;
+    --footer-title: #1a1a1a;
+    --footer-link: #4a4a4a;
+    --footer-link-hover: #1a1a1a;
+    --footer-accent: #007bff;
+    --footer-accent-hover: #0056b3;
+    --footer-border: rgba(0, 0, 0, 0.1);
     --footer-radius: 8px;
     --footer-gap: 24px;
 }
@@ -109,6 +123,10 @@
 }
 
 .newsletter-form input[type="email"]::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+body.dark .newsletter-form input[type="email"]::placeholder {
     color: rgba(255, 255, 255, 0.4);
 }
 
@@ -172,17 +190,18 @@
 /* Back-to-Top Button */
 .back-to-top {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    right: 60px;
+    bottom: 60px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
     background: rgba(255, 255, 255, 0.05);
     color: var(--footer-title);
     border: none;
     cursor: pointer;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.2s ease, transform 0.2s ease;

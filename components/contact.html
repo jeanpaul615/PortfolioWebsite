@@ -50,11 +50,6 @@
                 const email = form.correo.value.trim();
                 const message = form.mensaje.value.trim();
 
-                if (!name || !email || !message) {
-                    feedback.textContent = 'Por favor completa todos los campos.';
-                    feedback.classList.add('error');
-                    return;
-                }
 
                 // Redirigir a WhatsApp con el mensaje prellenado
                 const phoneNumber = "573203956315"; // Reemplaza con tu número de WhatsApp

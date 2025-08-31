@@ -10,7 +10,7 @@ class NavbarManager {
 
     init() {
         this.setupScrollBehavior();
-        this.setupMobileMenu();
+        this.setupMenuToggle(); // Renamed from setupMobileMenu
         this.setupSmoothScroll();
     }
 
@@ -30,10 +30,15 @@ class NavbarManager {
         });
     }
 
-    setupMobileMenu() {
+    setupMenuToggle() { // Renamed and updated
         if (this.menuToggle && this.navLinks) {
             this.menuToggle.addEventListener('click', () => {
-                this.navLinks.classList.toggle('active');
+                const isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    this.navLinks.classList.toggle('active');
+                } else {
+                    this.navLinks.classList.toggle('collapsed');
+                }
                 
                 // Update menu icon
                 const icon = this.menuToggle.querySelector('i');
@@ -43,10 +48,15 @@ class NavbarManager {
                 }
             });
 
-            // Close menu when clicking on any link inside nav-links (soportando nuevos links)
+            // Close menu when clicking on any link inside nav-links
             this.navLinks.addEventListener('click', (e) => {
                 if (e.target.tagName === 'A') {
-                    this.navLinks.classList.remove('active');
+                    const isMobile = window.innerWidth <= 768;
+                    if (isMobile) {
+                        this.navLinks.classList.remove('active');
+                    } else {
+                        this.navLinks.classList.add('collapsed');
+                    }
                     const icon = this.menuToggle.querySelector('i');
                     if (icon) {
                         icon.classList.add('fa-bars');
