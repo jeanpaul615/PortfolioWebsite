@@ -57,7 +57,7 @@
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: var(--accent-color);
+    background-color: var(--text-primary);
     transition: width 0.3s ease;
     color: var(--text-primary);
 }
@@ -86,7 +86,7 @@
 
 /* Mobile menu */
 .menu-toggle {
-    display: block; /* Show on all screens */
+    display: none; /* Hide on desktop */
     cursor: pointer;
     font-size: 1.5rem;
     padding: 10px;
@@ -95,7 +95,7 @@
 
 @media screen and (max-width: 768px) {
     .menu-toggle {
-        display: block;
+        display: block; /* Show on mobile */
     }
     
     .nav-links {
@@ -108,9 +108,7 @@
         flex-direction: column;
         padding: 20px 0;
         box-shadow: var(--shadow);
-        color: var(--text-primary);
     }
-    
     .nav-links.active {
         display: flex;
     }
@@ -119,5 +117,6 @@
         margin: 10px 0;
     }
 }
+
 
 
