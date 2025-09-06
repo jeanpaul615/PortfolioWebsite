@@ -152,46 +152,129 @@
 </section>
 
 <!-- Modal reutilizable -->
-<div id="project-modal" class="modal">
-    <div class="modal-content">
+<div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content" tabindex="-1">
         <span class="close" style="cursor:pointer;">&times;</span>
         <h3 id="modal-title"></h3>
         <p id="modal-tech"></p>
         <p id="modal-description"></p>
-        <div id="modal-images" style="display:flex;gap:1rem;flex-wrap:wrap;"></div>
+
+        <!-- Gallery: main image + navigation -->
+        <div class="gallery">
+            <button class="nav prev" aria-label="Anterior">‹</button>
+            <img id="modal-main-image" alt="" loading="eager" />
+            <button class="nav next" aria-label="Siguiente">›</button>
+        </div>
+
+        <!-- Thumbnails -->
+        <div id="modal-thumbs" class="thumbs"></div>
+
         <a id="modal-github" href="#" target="_blank" class="modal-github-link">Ver en GitHub</a>
     </div>
 </div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('project-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalTech = document.getElementById('modal-tech');
     const modalDescription = document.getElementById('modal-description');
-    const modalImages = document.getElementById('modal-images');
     const modalGithub = document.getElementById('modal-github');
     const closeBtn = modal.querySelector('.close');
 
+    // Gallery elements
+    const mainImage = document.getElementById('modal-main-image');
+    const thumbsWrap = document.getElementById('modal-thumbs');
+    const prevBtn = modal.querySelector('.nav.prev');
+    const nextBtn = modal.querySelector('.nav.next');
+    const gallery = modal.querySelector('.gallery');
+
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function setMainImage(index) {
+        if (!currentImages.length) return;
+        currentIndex = (index + currentImages.length) % currentImages.length;
+        const src = currentImages[currentIndex];
+        mainImage.src = src;
+        mainImage.alt = modalTitle.textContent || '';
+        
+        // Show/hide navigation buttons
+        prevBtn.style.display = currentImages.length > 1 ? 'flex' : 'none';
+        nextBtn.style.display = currentImages.length > 1 ? 'flex' : 'none';
+        
+        // highlight active thumb
+        thumbsWrap.querySelectorAll('img').forEach((img, i) => {
+            img.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function renderThumbnails(images) {
+        thumbsWrap.innerHTML = '';
+        if (images.length <= 1) {
+            thumbsWrap.style.display = 'none';
+            return;
+        }
+        
+        thumbsWrap.style.display = 'flex';
+        images.forEach((src, i) => {
+            const t = document.createElement('img');
+            t.src = src;
+            t.alt = (modalTitle.textContent || 'image') + ' ' + (i + 1);
+            t.loading = 'lazy';
+            t.addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                setMainImage(i);
+            });
+            thumbsWrap.appendChild(t);
+        });
+    }
+
+    // Nav buttons
+    prevBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        if (currentImages.length) setMainImage(currentIndex - 1);
+    });
+    
+    nextBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        if (currentImages.length) setMainImage(currentIndex + 1);
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (modal.style.display === 'block') {
+            if (e.key === 'ArrowLeft') setMainImage(currentIndex - 1);
+            else if (e.key === 'ArrowRight') setMainImage(currentIndex + 1);
+            else if (e.key === 'Escape') modal.style.display = 'none';
+        }
+    });
+
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', function (e) {
-            // Evita que el click en el modal cierre la ventana si se hace click en el link
             if (e.target.tagName === 'A') return;
+            
             modalTitle.textContent = card.getAttribute('data-title') || '';
             modalTech.textContent = card.getAttribute('data-tech') ? `Tecnologías: ${card.getAttribute('data-tech')}` : '';
             modalDescription.textContent = card.getAttribute('data-description') || '';
-            // Imágenes
-            modalImages.innerHTML = '';
-            const images = (card.getAttribute('data-images') || '').split(',');
-            images.forEach(src => {
-                if (src.trim()) {
-                    const img = document.createElement('img');
-                    img.src = src.trim();
-                    img.alt = card.getAttribute('data-title') || '';
-                    img.style.maxWidth = '180px';
-                    img.style.borderRadius = '8px';
-                    modalImages.appendChild(img);
-                }
-            });
+
+            // Build gallery from data-images
+            const imgs = (card.getAttribute('data-images') || '')
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean);
+
+            currentImages = imgs;
+            if (currentImages.length) {
+                gallery.style.display = 'flex';
+                renderThumbnails(currentImages);
+                setMainImage(0);
+            } else {
+                gallery.style.display = 'none';
+                thumbsWrap.style.display = 'none';
+                mainImage.removeAttribute('src');
+            }
+
             // GitHub link - allow default navigation to new tab
             const githubUrl = card.getAttribute('data-github');
             if (githubUrl && githubUrl !== '#') {
@@ -200,13 +283,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 modalGithub.rel = 'noopener noreferrer';
                 modalGithub.style.display = 'inline-block';
                 modalGithub.onclick = function (ev) {
-                    ev.stopPropagation(); // Prevent modal from closing, but allow default link behavior
+                    ev.stopPropagation();
                 };
             } else {
                 modalGithub.removeAttribute('href');
                 modalGithub.style.display = 'none';
                 modalGithub.onclick = null;
             }
+
             modal.style.display = 'block';
         });
     });
@@ -214,6 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeBtn.onclick = function () {
         modal.style.display = 'none';
     };
+    
     window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = 'none';

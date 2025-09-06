@@ -3,67 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jean Paul - Portfolio</title>
-    <link rel="stylesheet" href="css/main.css">
+    <title>Jean Paul Puerta Salazar | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    
+    <!-- CSS Components -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/hero.css">
+    <link rel="stylesheet" href="css/components/cards.css">
+    <link rel="stylesheet" href="css/components/technologies.css">
+    <link rel="stylesheet" href="css/components/experience.css">
     <link rel="stylesheet" href="css/components/projects.css">
-    <!-- AOS Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/components/contact.css">
+    <link rel="stylesheet" href="css/components/certifications.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-brand">Jean Paul</a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Inicio</a></li>
-                <li><a href="#about" class="nav-link">Sobre mí</a></li>
-                <li><a href="#projects" class="nav-link">Proyectos</a></li>
-                <li><a href="#contact" class="nav-link">Contacto</a></li>
-            </ul>
+    <!-- Component Containers -->
+    <div id="navbar-container">
+    </div>
+    
+    <main>
+        <div id="hero-container">
+            <!-- Hero mejorado para búsqueda de trabajo -->
+            <section id="home" class="hero">
+                <div class="hero-content" data-aos="flip-left" data-aos-duration="1000">
+                    
+                    <h1 class="typing">Hola, soy <span class="gradient-text">Jean Paul Puerta Salazar</span></h1>
+                    <p class="hero-subtitle"><strong>Desarrollador Full Stack con +1 año de experiencia</strong></p>
+                    <p class="hero-subtitle second-line">Especializado en React, Nest.js y soluciones escalables</p>
+                    
+                    
+                    <p class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <strong>Pereira, Colombia</strong>
+                    </p>
+                    
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/jeanpaul615" target="_blank" class="social-icon hvr-float" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/jean-paul-puerta-40068a202" target="_blank" class="social-icon hvr-float" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:salazarjean2003@gmail.com" class="social-icon hvr-float" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="hero-cta">
+                        <a href="#" 
+                           id="hero-contact-button" 
+                           class="cta-button scroll-link">
+                           Contactar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <div class="mouse"></div>
+                </div>
+            </section>
         </div>
-    </nav>
-
-    <!-- Home Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Jean Paul</h1>
-            <h2>Desarrollador Full Stack</h2>
-            <p>Creando soluciones digitales innovadoras</p>
-            <a href="#projects" class="btn-primary">Ver Proyectos</a>
+        
+        <div id="about-container">
+            <section id="about" class="about">
+                <!-- ...existing code... -->
+            </section>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>Sobre mí</h2>
-            <p>Desarrollador apasionado por crear aplicaciones web modernas...</p>
+        
+        <div id="experience-container">
+            <section id="experience" class="experience">
+                <!-- ...existing code... -->
+            </section>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <div id="projects-container"></div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contacto</h2>
-            <p>¿Tienes un proyecto en mente? ¡Hablemos!</p>
-            <a href="mailto:tu-email@gmail.com" class="btn-primary">Contactar</a>
+        
+        <div id="projects-container">
+            <section id="projects" class="projects">
+                <!-- ...existing code... -->
+            </section>
         </div>
-    </section>
+
+        <div id="certifications-container">
+            <section id="certifications" class="certifications">
+            </section>
+        </div>
+        
+        <div id="contact-container">
+            <section id="contact" class="contact">
+                <!-- ...existing code... -->
+            </section>
+        </div>
+    </main>
+    
+    <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            once: true,
+            offset: 200
+        });
+    </script>
+    
+    <!-- Component Scripts -->
+    <script src="js/componentLoader.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/projects.js"></script>
 
-        // Load projects component
-        fetch('components/projects.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('projects-container').innerHTML = data;
-            });
+    <!-- Inicializar ComponentLoader después de que los scripts dependientes estén cargados -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = new ComponentLoader();
+            loader.loadAllComponents();
+        });
+    </script>
+
+    <script>
+        // Redirigir a WhatsApp al hacer clic en el botón "Contactar"
+        document.getElementById('hero-contact-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            const phoneNumber = "573203956315"; // Reemplaza con tu número de WhatsApp
+            const message = "Hola, estoy interesado en tus servicios";
+            const whatsappURL = `https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
+            window.open(whatsappURL, '_blank');
+        });
     </script>
 </body>
 </html>
